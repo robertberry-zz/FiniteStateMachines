@@ -23,4 +23,12 @@ class DeterministicFSM[Alphabet](val states: Set[State], val transition: (State,
 
     finishStates.contains(state)
   }
+
+  /**
+   * Whether machine rejects input
+   *
+   * @param input The input string
+   * @return Whether rejected
+   */
+  def rejects(input: Seq[Alphabet]): Boolean = !accepts(input)
 }

@@ -6,7 +6,7 @@ import org.scalatest.FlatSpec
 /**
  * Deterministic Finite State MAchine specification
  */
-class DeterministicFSMSpecification extends FlatSpec {
+class DeterministicFSMTest extends FlatSpec {
   "A Deterministic Finite State Machine" should "only allow start states that are part of its set of states" in {
     val endsWithZero = EndsWithZero.machine
 
@@ -25,3 +25,4 @@ class DeterministicFSMSpecification extends FlatSpec {
     }
   }
 }
+
