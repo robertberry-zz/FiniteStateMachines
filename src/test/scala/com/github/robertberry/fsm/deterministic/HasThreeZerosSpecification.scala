@@ -4,11 +4,7 @@ import examples.HasThreeZeros
 import org.scalatest.FlatSpec
 
 /**
- * Created with IntelliJ IDEA.
- * User: robert
- * Date: 02/01/2013
- * Time: 22:36
- * To change this template use File | Settings | File Templates.
+ * Tests for has three zeros machine
  */
 class HasThreeZerosSpecification extends FlatSpec {
   val hasThreeZeros = HasThreeZeros.machine
