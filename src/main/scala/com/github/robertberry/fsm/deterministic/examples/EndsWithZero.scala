@@ -2,6 +2,9 @@ package com.github.robertberry.fsm.deterministic.examples
 
 import com.github.robertberry.fsm.deterministic._
 
+/**
+ * Finite state machine that accepts strings that end with zero
+ */
 object EndsWithZero {
   val q1 = State("q1")
   val q2 = State("q2")
