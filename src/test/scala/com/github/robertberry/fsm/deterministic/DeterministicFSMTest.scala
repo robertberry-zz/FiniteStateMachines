@@ -11,8 +11,8 @@ class DeterministicFSMTest extends FlatSpec {
     val endsWithZero = EndsWithZero.machine
 
     intercept[IllegalArgumentException] {
-      new DeterministicFSM[BinaryAlphabet](endsWithZero.states, endsWithZero.transition,
-        State("q4"), endsWithZero.finishStates)
+      new BinaryDFSM(endsWithZero.states, endsWithZero.transition,
+        'q4, endsWithZero.finishStates)
     }
   }
 
@@ -20,8 +20,8 @@ class DeterministicFSMTest extends FlatSpec {
     val endsWithZero = EndsWithZero.machine
 
     intercept[IllegalArgumentException] {
-      new DeterministicFSM[BinaryAlphabet](endsWithZero.states, endsWithZero.transition, endsWithZero.startState,
-        Set[State](endsWithZero.startState, State("q4")))
+      new BinaryDFSM(endsWithZero.states, endsWithZero.transition, endsWithZero.startState,
+        Set(endsWithZero.startState, 'q4))
     }
   }
 }
