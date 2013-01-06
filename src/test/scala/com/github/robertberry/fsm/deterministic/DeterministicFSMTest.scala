@@ -12,7 +12,7 @@ class DeterministicFSMTest extends FlatSpec {
 
     intercept[IllegalArgumentException] {
       new BinaryDFSM(endsWithZero.states, endsWithZero.transition,
-        'q4, endsWithZero.finishStates)
+        'q4, endsWithZero.acceptStates)
     }
   }
 

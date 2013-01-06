@@ -2,6 +2,7 @@ package com.github.robertberry.fsm.deterministic
 
 import examples.HasExactlyTwoOnes
 import org.scalatest.FlatSpec
+import com.github.robertberry.fsm.alphabets.{One, Zero}
 
 /**
  * Tests for has exactly two ones deterministic finite state machine

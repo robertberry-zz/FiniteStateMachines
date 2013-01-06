@@ -1,6 +1,7 @@
 package com.github.robertberry.fsm.deterministic.examples
 
 import com.github.robertberry.fsm.deterministic._
+import com.github.robertberry.fsm.alphabets.{One, Zero, Binary}
 
 /**
  * Deterministic finite state machine that accepts strings containing exactly two ones
@@ -9,7 +10,7 @@ object HasExactlyTwoOnes {
   val states = Set('q1, 'q2, 'q3, 'q4)
   val finishStates = Set('q3)
 
-  def transition(state: Symbol, input: BinaryAlphabet): Symbol = (state, input) match {
+  def transition(state: Symbol, input: Binary): Symbol = (state, input) match {
     case ('q1, One) => 'q2
     case ('q1, Zero) => 'q1
     case ('q2, One) => 'q3

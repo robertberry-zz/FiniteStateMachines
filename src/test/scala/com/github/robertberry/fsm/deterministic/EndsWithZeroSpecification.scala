@@ -2,6 +2,7 @@ package com.github.robertberry.fsm.deterministic
 
 import examples.EndsWithZero
 import org.scalatest.FlatSpec
+import com.github.robertberry.fsm.alphabets.{One, Zero}
 
 class EndsWithZeroSpecification extends FlatSpec {
   val endsWithZero = EndsWithZero.machine

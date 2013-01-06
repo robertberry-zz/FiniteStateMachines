@@ -1,12 +1,14 @@
 package com.github.robertberry.fsm.deterministic
 
+import com.github.robertberry.fsm.Rejects
+
 /**
  * Deterministic finite state machine
  */
 class DeterministicFSM[Alphabet, State](val states: Set[State], val transition: (State, Alphabet) => State,
-                       val startState: State, val finishStates: Set[State]) {
-  require(states.contains(startState), "Start state must be in set of states.")
-  require(finishStates.subsetOf(states), "Finish states must be subset of set of states.")
+                       val startState: State, val acceptStates: Set[State]) extends Rejects[Alphabet] {
+  require(states contains startState, "Start state must be in set of states.")
+  require(acceptStates subsetOf states, "Finish states must be subset of set of states.")
 
   /**
    * Whether machine accepts input
@@ -16,14 +18,6 @@ class DeterministicFSM[Alphabet, State](val states: Set[State], val transition: 
    */
   def accepts(input: Seq[Alphabet]): Boolean = {
     val end = input.foldLeft(startState)(transition)
-    finishStates.contains(end)
+    acceptStates contains end
   }
-
-  /**
-   * Whether machine rejects input
-   *
-   * @param input The input string
-   * @return Whether rejected
-   */
-  def rejects(input: Seq[Alphabet]): Boolean = !accepts(input)
 }

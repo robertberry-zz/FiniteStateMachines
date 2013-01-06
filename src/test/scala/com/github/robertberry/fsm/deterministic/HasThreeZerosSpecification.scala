@@ -2,6 +2,7 @@ package com.github.robertberry.fsm.deterministic
 
 import examples.HasThreeZeros
 import org.scalatest.FlatSpec
+import com.github.robertberry.fsm.alphabets.{One, Zero}
 
 /**
  * Tests for has three zeros machine
