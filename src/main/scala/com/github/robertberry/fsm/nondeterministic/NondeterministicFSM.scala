@@ -14,11 +14,11 @@ class NondeterministicFSM[Alphabet, State](val states: Set[State], val transitio
   def accepts(input: Seq[Alphabet]): Boolean = {
     var states = Set(startState)
 
-    for (char: Alphabet <- input) {
-      states = states ++ states.flatMap[State](transition(_, None)).toSet
-      states = states.flatMap[State](transition(_, Some(char))).toSet
-    }
+    val endStates = input.foldLeft(Set(startState))((states: Set[State], char: Alphabet) => {
+      val withNoneTransitions = states ++ states.flatMap[State](transition(_, None))
+      withNoneTransitions.flatMap[State](transition(_, Some(char))).toSet
+    })
 
-    !(states isEmpty)
+    (endStates intersect acceptStates).nonEmpty
   }
 }
