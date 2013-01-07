@@ -15,8 +15,8 @@ class NondeterministicFSM[Alphabet, State](val states: Set[State], val transitio
     var states = Set(startState)
 
     val endStates = input.foldLeft(Set(startState))((states: Set[State], char: Alphabet) => {
-      val withNoneTransitions = states ++ states.flatMap[State](transition(_, None))
-      withNoneTransitions.flatMap[State](transition(_, Some(char))).toSet
+      val withNoneTransitions: Set[State] = states ++ states.flatMap(transition(_, None))
+      withNoneTransitions.flatMap(transition(_, Some(char))).toSet
     })
 
     (endStates intersect acceptStates).nonEmpty

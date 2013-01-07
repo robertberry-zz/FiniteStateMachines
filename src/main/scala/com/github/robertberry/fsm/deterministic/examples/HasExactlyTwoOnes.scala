@@ -8,7 +8,7 @@ import com.github.robertberry.fsm.alphabets.{One, Zero, Binary}
  */
 object HasExactlyTwoOnes {
   val states = Set('q1, 'q2, 'q3, 'q4)
-  val finishStates = Set('q3)
+  val acceptStates = Set('q3)
 
   def transition(state: Symbol, input: Binary): Symbol = (state, input) match {
     case ('q1, One) => 'q2
@@ -20,5 +20,5 @@ object HasExactlyTwoOnes {
     case ('q4, _) => 'q4
   }
 
-  val machine = new BinaryDFSM(states, transition, 'q1, finishStates)
+  val machine = new BinaryDFSM(states, transition, 'q1, acceptStates)
 }

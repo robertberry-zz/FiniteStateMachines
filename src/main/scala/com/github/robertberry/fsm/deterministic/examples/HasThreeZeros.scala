@@ -8,7 +8,7 @@ import com.github.robertberry.fsm.alphabets.{One, Zero, Binary}
  */
 object HasThreeZeros {
   val states = Set('q1, 'q2, 'q3, 'q4)
-  val finishStates = Set('q4)
+  val acceptStates = Set('q4)
 
   def transition(state: Symbol, input: Binary): Symbol = (state, input) match {
     case ('q1, Zero) => 'q2
@@ -20,5 +20,5 @@ object HasThreeZeros {
     case ('q4, _) => 'q4
   }
 
-  val machine = new BinaryDFSM(states, transition, 'q1, finishStates)
+  val machine = new BinaryDFSM(states, transition, 'q1, acceptStates)
 }
