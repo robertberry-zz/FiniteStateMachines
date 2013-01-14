@@ -7,4 +7,6 @@ import alphabets.Binary
  */
 package object deterministic {
   type BinaryDFSM = DeterministicFSM[Binary, Symbol]
+
+  type BinaryTransition = Transition[Binary, Symbol]
 }
