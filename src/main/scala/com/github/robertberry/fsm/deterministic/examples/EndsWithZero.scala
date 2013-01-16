@@ -1,8 +1,8 @@
 package com.github.robertberry.fsm.deterministic.examples
 
 import com.github.robertberry.fsm.deterministic._
-import com.github.robertberry.fsm.alphabets.{One, Zero, Binary}
-import com.github.robertberry.fsm.Transition
+import com.github.robertberry.fsm.alphabets.{One, Zero}
+import com.github.robertberry.fsm.deterministic.BinaryTransition
 
 /**
  * Finite state machine that accepts strings that end with zero

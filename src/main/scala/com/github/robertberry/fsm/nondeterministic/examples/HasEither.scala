@@ -1,7 +1,8 @@
 package com.github.robertberry.fsm.nondeterministic.examples
 
-import com.github.robertberry.fsm.alphabets.{One, Zero, Binary}
+import com.github.robertberry.fsm.alphabets.{One, Zero}
 import com.github.robertberry.fsm.nondeterministic.BinaryNFSM
+import com.github.robertberry.fsm.nondeterministic.BinaryTransition
 
 /**
  * Non-deterministic finite state machine that matches strings that have either 1001 or 10101 as sub-strings.
@@ -11,21 +12,22 @@ object HasEither {
 
   val acceptStates = Set('q6)
 
-  def transition(state: Symbol, input: Option[Binary]): Set[Symbol] = (state, input) match {
-    case ('q1, None) => Set('q2, 'q7)
-    case ('q1, Some(_)) => Set('q1)
-    case ('q2, Some(One)) => Set('q3)
-    case ('q3, Some(Zero)) => Set('q4)
-    case ('q4, Some(Zero)) => Set('q5)
-    case ('q5, Some(One)) => Set('q6)
-    case ('q6, Some(_)) => Set('q6)
-    case ('q7, Some(One)) => Set('q8)
-    case ('q8, Some(Zero)) => Set('q9)
-    case ('q9, Some(One)) => Set('q10)
-    case ('q10, Some(Zero)) => Set('q11)
-    case ('q11, Some(One)) => Set('q6)
-    case _ => Set()
-  }
+  val transitions = Seq(
+    new BinaryTransition('q1, None, Set('q2, 'q7)),
+    new BinaryTransition('q1, Some(Zero), Set('q1)),
+    new BinaryTransition('q1, Some(One), Set('q1)),
+    new BinaryTransition('q2, Some(One), Set('q3)),
+    new BinaryTransition('q3, Some(Zero), Set('q4)),
+    new BinaryTransition('q4, Some(Zero), Set('q5)),
+    new BinaryTransition('q5, Some(One), Set('q6)),
+    new BinaryTransition('q6, Some(Zero), Set('q6)),
+    new BinaryTransition('q6, Some(One), Set('q6)),
+    new BinaryTransition('q7, Some(One), Set('q8)),
+    new BinaryTransition('q8, Some(Zero), Set('q9)),
+    new BinaryTransition('q9, Some(One), Set('q10)),
+    new BinaryTransition('q10, Some(Zero), Set('q11)),
+    new BinaryTransition('q11, Some(One), Set('q6))
+  )
 
-  val machine = new BinaryNFSM(states, transition, 'q1, acceptStates)
+  val machine = new BinaryNFSM(states, transitions, 'q1, acceptStates)
 }

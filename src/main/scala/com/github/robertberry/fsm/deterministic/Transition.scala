@@ -1,4 +1,4 @@
-package com.github.robertberry.fsm
+package com.github.robertberry.fsm.deterministic
 
 /**
  * Transition between two states
